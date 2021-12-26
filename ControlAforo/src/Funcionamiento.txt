@@ -1,0 +1,47 @@
+SIMULACRO 1 -> CONTROL AFLUENCIA CENTRO COMERCIAL
+
+El proyecto contiene las siguientes clases:
+
+1. Cliente -> clase que construye clientes que acceden al centro comercial.  Recibe dos parámetros, adultos y niños.
+2. CentroComercial -> es la clase central.  Implementa el semáforo y también los métodos que controlan la entrada y salida del centro comercial. También contiene distintos métodos para obtener información sobre 
+			el aforo del centro comercial.
+3. ControlAcceso -> clase que ejecuta el método run() que ejecuta el método que realiza el conteo de entrada.
+4. ControlSalida -> clase que ejecuta el método run() que ejecuta el método que realiza el conteo de salida.
+5. Principal -> clase que ejecuta diferentes hilos y muestra la información final sobre el aforo, los clientes que han entrado y que han salido.  En todos los casos se muestra el total clientes, total
+			adultos y total niños.
+
+A tener en cuenta:
+
+Entrada -> si al intentar acceder se supera el aforo establecido, el hilo se queda en espera hasta que haya aforo disponible.  Si hay aforo disponible, el cliente entra.  Se contabiliza cuantos clientes han  
+		entrado en total, pero también cuantos adultos y cuantos niños entran.
+
+Salida -> al slir se controla que al salir, el aforo sea igual o mayor que 0, pero también debe cumplirse que el número de adultos que salen sea inferior o igual al número de adultos que hay dentro y el 
+		número de niños que salen debe ser inferior o igual al número de niños que hay dentro.  Si se cumplen estas condiciones, se contabiliza la salida.  En caso contrario, el hilo queda a la
+		espera hasta que puedan cumplirse las condiciones.
+
+
+
+Ejemplo de ejecución -> este es el resultado de una ejecución del programa:
+
+
+Cliente 7 -> No pueden salir más clientes de los que hay dentro.  Quieren salir 30 y hay 0 clientes dentro
+Cliente 7 -> No pueden salir más adultos de los que hay dentro.  Quieren salir 15 adultos y hay 0 adultos dentro
+Cliente 7 -> No pueden salir más niños de los que hay dentro.  Quieren salir 15 niños y hay 0 niños dentro
+Cliente 2 -> Acceso Permitido. Nuevo aforo 5 . Total Adultos: 5 . Total niños: 0
+Cliente 1 -> Acceso Permitido. Nuevo aforo 20 . Total Adultos: 15 . Total niños: 5
+Cliente 4 -> Acceso Permitido. Nuevo aforo 24 . Total Adultos: 18 . Total niños: 6
+Cliente 3 -> Acceso no permitido.  Se supera el aforo máximo permitido en 9 clientes.
+Cliente 6 -> Han salido 19 clientes: 16 adultos y 3 niños. Nuevo aforo es: 5 . Total Adultos: 2 . Total Niños: 3
+Cliente 5 -> Acceso Permitido. Nuevo aforo 15 . Total Adultos: 7 . Total niños: 8
+Cliente 3 -> Acceso Permitido. Nuevo aforo 40 . Total Adultos: 22 . Total niños: 18
+Cliente 7 -> Han salido 30 clientes: 15 adultos y 15 niños. Nuevo aforo es: 10 . Total Adultos: 7 . Total Niños: 3
+
+------------------------------------------------Resumen Control Acceso-----------------------------------------------------------------
+
+Aforo final: 10 clientes
+Quedan 7 adultos y 3 niños.
+En total han entrado 59 clientes y han salido 49
+En total han entrado 38 adultos y 21 niños
+En total han salido 31 adultos y 18 niños
+
+------------------------------------------------Aplicación finalizada------------------------------------------------------------------
